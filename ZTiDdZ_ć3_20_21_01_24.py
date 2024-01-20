@@ -29,7 +29,7 @@ def generate_new_password():
 
     return password
 
-# Uruchomienie metod i testowanie
+# Running methods and testing
 if __name__ == '__main__':
     first_pass_b64 = codePassToBase64('alamakota')
     print(first_pass_b64)

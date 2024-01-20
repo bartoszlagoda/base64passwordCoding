@@ -3,43 +3,43 @@ import random
 import string
 
 
-def kodujHasloNaBase64(encodePassword):
-    # metoda kodująca podanego stringa do base64
-    enkodujHasloDoBajtow = encodePassword.encode('ascii')
-    enkodujHaslo = base64.b64encode(enkodujHasloDoBajtow)
-    dekodujHasloDoAscii = enkodujHaslo.decode('ascii')
-    return dekodujHasloDoAscii
+def codePassToBase64(encodePassword):
+    # Method that encodes the given string into base64
+    encodePassToByte = encodePassword.encode('ascii')
+    encodePassTob64 = base64.b64encode(encodePassToByte)
+    decodePass = encodePassTob64.decode('ascii')
+    return decodePass
 
-def generuj_haslo():
-    # Zmienne tworzące wszystkie możliwe znaki w haśle
-    wielkie_litery = string.ascii_uppercase
-    male_litery = string.ascii_lowercase
-    cyfry = string.digits
-    znaki_specjalne = string.punctuation
+def generate_new_password():
+    # Variables that create all possible characters in a password
+    big_letters = string.ascii_uppercase
+    small_letters = string.ascii_lowercase
+    digits = string.digits
+    special_signs = string.punctuation
 
-    # Stworzenie pierwszego hasła zawierającego wszystkie powyższe zmienne
-    wszystkie_znaki = wielkie_litery + male_litery + cyfry + znaki_specjalne
+    # Creating the first password containing all the above variables
+    all_signs = big_letters + small_letters + digits + special_signs
 
-    # generowanie hasła o długości nie mniejszej niż 8 znaków i nie większej niż 12
-    haslo = random.choice(wielkie_litery) + random.choice(male_litery) + random.choice(cyfry) + random.choice(znaki_specjalne)
-    haslo += ''.join(random.choice(wszystkie_znaki) for i in range(random.randint(4,12)))
+    # generating a password with a length of not less than 8 characters and not more than 12
+    password = random.choice(big_letters) + random.choice(small_letters) + random.choice(digits) + random.choice(special_signs)
+    password += ''.join(random.choice(all_signs) for i in range(random.randint(4,12)))
 
-    # Mieszamy hasło
-    haslo = ''.join(random.sample(haslo, len(haslo)))
+    # Mix the password
+    password = ''.join(random.sample(password, len(password)))
 
-    return haslo
+    return password
 
 # Uruchomienie metod i testowanie
 if __name__ == '__main__':
-    pierwsze_haslo_b64 = kodujHasloNaBase64('alamakota')
-    print(pierwsze_haslo_b64)
-    drugie_haslo_b64 = kodujHasloNaBase64('e2r4t5y6u7i8o9p0a0s9d8f7g6h5j4k3l2-a1s2!34%g6h&j*!a')
-    print(drugie_haslo_b64)
+    first_pass_b64 = codePassToBase64('alamakota')
+    print(first_pass_b64)
+    second_pass_b64 = codePassToBase64('e2r4t5y6u7i8o9p0a0s9d8f7g6h5j4k3l2-a1s2!34%g6h&j*!a')
+    print(second_pass_b64)
 
-    pierwszeHaslo = generuj_haslo()
-    drugieHaslo = generuj_haslo()
-    trzecieHaslo = generuj_haslo()
+    firstPass = generate_new_password()
+    secondPass = generate_new_password()
+    thirdPass = generate_new_password()
 
-    print(pierwszeHaslo)
-    print(drugieHaslo)
-    print(trzecieHaslo)
+    print(firstPass)
+    print(secondPass)
+    print(thirdPass)

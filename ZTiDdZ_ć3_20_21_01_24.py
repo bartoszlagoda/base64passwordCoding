@@ -43,3 +43,6 @@ if __name__ == '__main__':
     print(firstPass)
     print(secondPass)
     print(thirdPass)
+
+    mixAllMethods = codePassToBase64(generate_new_password())
+    print(mixAllMethods)
